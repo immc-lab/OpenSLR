@@ -3,7 +3,7 @@ phase: train
 dataset: phoenix2014 #phoenix2014, phoenix2014-T, CSL
 # dataset: phoenix14-si5
 num_epoch: 80
-work_dir: ./work_dir/baseline_resnet18_liftpool/
+work_dir: /share/huaiwen_group/work_dir/www2026_test_1/
 batch_size: 2
 random_seed: 0
 test_batch_size: 2
@@ -37,7 +37,7 @@ feeder_args:
   frame_interval: 1
   image_scale: 1.0
 
-model: slr_network.SLRModel
+model: models.TLP2.build_tlp
 decode_mode: beam
 model_args:
   num_classes: 1296

@@ -1,12 +1,6 @@
-import os
-import pdb
-import time
 import torch
 import ctcdecode
-import numpy as np
 from itertools import groupby
-import torch.nn.functional as F
-
 
 class Decode(object):
     def __init__(self, gloss_dict, num_classes, search_mode, blank_id=0):
