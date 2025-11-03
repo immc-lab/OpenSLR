@@ -49,22 +49,23 @@ class Local_Weighting(nn.Module):
         return x + x*(F.sigmoid(self.insnorm(out))-0.5)
 
 class TemporalConv(nn.Module):
-    def __init__(self, input_size, hidden_size, conv_type=2, use_bn=False, num_classes=-1):
+    def __init__(self, input_size, hidden_size, kernel_size=['K3'], stride=[0], use_bn=False, num_classes=-1):
         super(TemporalConv, self).__init__()
         self.use_bn = use_bn
         self.input_size = input_size
         self.hidden_size = hidden_size
         self.num_classes = num_classes
-        self.conv_type = conv_type
+        self.kernel_size = kernel_size
+        self.strides = stride
 
-        if self.conv_type == 0:
-            self.kernel_size = ['K3']
-        elif self.conv_type == 1:
-            self.kernel_size = ['K5', "P2"]
-            self.strides = [0]
-        elif self.conv_type == 2:
-            self.kernel_size = ['K5', "P2", 'K5', "P2"]
-            self.strides = [4,0]
+        # if self.conv_type == 0:
+        #     self.kernel_size = ['K3']
+        # elif self.conv_type == 1:
+        #     self.kernel_size = ['K5', "P2"]
+        #     self.strides = [0]
+        # elif self.conv_type == 2:
+        #     self.kernel_size =
+
 
 
         self.temporal_conv = nn.ModuleList([])

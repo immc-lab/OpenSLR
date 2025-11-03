@@ -1,23 +1,28 @@
 import os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 
-from manager.argument_manager import ArgumentManger
+from manager.argument_manager import ArgumentManager
 from manager.config_manager import ConfigManager
 from manager.log_manager import LogManager
 from manager.experiment_manager import ExperimentManager
 from manager.dataset_manager import DatasetManager
 from manager.dataloader_manager import DataloaderManager
 from manager.module_manager import ModuleManager
+from manager.device_manager import DeviceManager
+from manager.collect_manager import CollectManager
 
 def init():
-    ArgumentManger.init()
+    ArgumentManager.init( )
     ConfigManager.init()
-    ArgumentManger.map(ConfigManager.get())
+    ArgumentManager.map( ConfigManager.get( ) )
     LogManager.init()
     DatasetManager.init()
+    CollectManager.init( ArgumentManager.get( ) )
     ModuleManager.init ( )
     DataloaderManager.init()
-    ExperimentManager.init(ArgumentManger.get())
+    DeviceManager.init ( ArgumentManager.get ( "device" ) )
+    ExperimentManager.init( ArgumentManager.get( ) )
+
 
 def run():
     ExperimentManager.run()

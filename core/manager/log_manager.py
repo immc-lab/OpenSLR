@@ -12,7 +12,7 @@ from rich.pretty import Pretty
 from rich.rule import Rule
 from loguru import logger
 
-from .argument_manager import ArgumentManger
+from .argument_manager import ArgumentManager
 from .config_manager import ConfigManager
 
 
@@ -91,7 +91,7 @@ class LogManager :
 
     @classmethod
     def info_manager ( cls ) -> None :
-        LogManager.info_panel ( vars(ArgumentManger.get ( )) , "Argument" )
+        LogManager.info_panel ( vars( ArgumentManager.get ( ) ) , "Argument" )
         # LogManager.info_panel ( ConfigManager.get ( ) , "Config" )
 
     @classmethod

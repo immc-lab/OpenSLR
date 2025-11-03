@@ -8,6 +8,10 @@ class CollectManager:
     # 定义类变量用于存储卷积核大小配置
     KERNEL_SIZES = None
 
+    @classmethod
+    def init( cls, args ):
+        cls.KERNEL_SIZES = args.model_args["kernel_size"]
+
     @staticmethod
     def collate ( batch ) :
         batch = [ item for item in sorted ( batch , key = lambda x : len ( x [ 0 ] ) , reverse = True ) ]

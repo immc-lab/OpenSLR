@@ -1,10 +1,9 @@
 # -*- encoding: utf-8 -*-
 import importlib
 
-import torch
 import torch.optim as optim
 
-from .argument_manager import ArgumentManger
+from .argument_manager import ArgumentManager
 from .log_manager import LogManager
 from .dataset_manager import DatasetManager
 from .collect_manager import CollectManager
@@ -22,24 +21,21 @@ class ModuleManager:
         cls.init_model_object ( )
         cls.init_optimizer_object()
         cls.init_scheduler_object()
-        # cls.init_scaler_object()
         cls.print_model_object( )
 
     @classmethod
     def init_model_object(cls):
-        arg = ArgumentManger.get ( )
-        build_function = import_class ( arg.model )
-        ModuleManager.MODEL_OBJECT, kernel_size = build_function (
+        arg = ArgumentManager.get ( )
+        build_function = cls.load( arg.model )
+        ModuleManager.MODEL_OBJECT= build_function (
             arg.model_args ,
             gloss_dict = DatasetManager.get_gloss_dict ( ) ,
             loss_weights = arg.loss_weights ,
-        )
-        ModuleManager.MODEL_OBJECT.to ( "cuda" )
-        CollectManager.KERNEL_SIZES = kernel_size
+        ).to ( "cuda" )
 
     @classmethod
     def init_optimizer_object(cls, optimizer_type="Adam"):
-        arg = ArgumentManger.get().optimizer_args
+        arg = ArgumentManager.get( ).optimizer_args
         if arg [ "optimizer" ] == 'SGD' :
             cls.OPTIMIZER_OBJECT = optim.SGD (
                 cls.MODEL_OBJECT ,
@@ -51,13 +47,6 @@ class ModuleManager:
         elif arg [ "optimizer" ] == 'Adam' :
             alpha = arg [ 'learning_ratio' ]
             cls.OPTIMIZER_OBJECT = optim.Adam (
-                # [
-                #     {'params': model.conv2d.parameters(), 'lr': self.optim_dict['base_lr']*alpha},
-                #     {'params': model.conv1d.parameters(), 'lr': self.optim_dict['base_lr']*alpha},
-                #     {'params': model.rnn.parameters()},
-                #     {'params': model.classifier.parameters()},
-                # ],
-                # model.conv1d.fc.parameters(),
                 cls.MODEL_OBJECT.parameters ( ) ,
                 lr = arg [ 'base_lr' ] ,
                 weight_decay = arg [ 'weight_decay' ]
@@ -68,7 +57,7 @@ class ModuleManager:
 
     @classmethod
     def init_scheduler_object(cls):
-        arg = ArgumentManger.get ( ).optimizer_args
+        arg = ArgumentManager.get ( ).optimizer_args
         if arg["optimizer"] in ['SGD', 'Adam']:
             cls.SCHEDULER_OBJECT = optim.lr_scheduler.MultiStepLR(cls.OPTIMIZER_OBJECT, milestones=arg['step'], gamma=0.2)
         else:
@@ -76,7 +65,7 @@ class ModuleManager:
 
     @classmethod
     def print_model_object(cls):
-        model_name = ArgumentManger.get("model").split (".")[-2]
+        model_name = ArgumentManager.get( "model" ).split ( "." )[-2 ]
         LogManager.info_panel( cls.MODEL_OBJECT , title= f"{model_name}" )
 
     @classmethod
@@ -94,14 +83,6 @@ class ModuleManager:
         else:
             raise ValueError(f"Unknown module name: {module_name}")
 
-
-    @classmethod
-    def run_model(cls, *args):
-        """
-        Run the model with the given arguments and keyword arguments
-        """
-        return cls.MODEL_OBJECT(*args)
-
     @classmethod
     def set( cls, mode ):
         if mode == "train":
@@ -111,9 +92,9 @@ class ModuleManager:
         else:
             raise ValueError(f"Unknown mode: {mode}")
 
-
-def import_class(name):
-    components = name.rsplit('.', 1)
-    mod = importlib.import_module(components[-2])
-    mod = getattr(mod, components[-1])
-    return mod
+    @classmethod
+    def load(cls, name):
+        components = name.rsplit ( '.' , 1 )
+        mod = importlib.import_module ( components [ -2 ] )
+        mod = getattr ( mod , components [ -1 ] )
+        return mod

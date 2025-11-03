@@ -1,7 +1,6 @@
-feeder: dataset.dataloader_video.BaseFeeder
+feeder: dataset.dataloader_video.VideoDataset
 phase: train
-dataset: phoenix2014 #phoenix2014, phoenix2014-T, CSL
-# dataset: phoenix14-si5
+dataset: phoenix2014
 num_epoch: 80
 work_dir: /share/huaiwen_group/work_dir/www2026_test_1/
 batch_size: 2
@@ -18,7 +17,6 @@ loss_weights:
   Dist: 25.0
   Cu: 0.001
   Cp: 0.001
-# load_weights: ./slt_baseline/baseline_p14_framewise_biCTC/dev_21.90_epoch55_model.pt
 
 optimizer_args:
   optimizer: Adam
@@ -37,12 +35,13 @@ feeder_args:
   frame_interval: 1
   image_scale: 1.0
 
-model: models.TLP2.build_tlp
+model: models.build_function.build_tlp
 decode_mode: beam
 model_args:
   num_classes: 1296
-  c2d_type: resnet18 #resnet18, squeezenet1_1, shufflenet_v2_x1_0, regnet_y_800mf, regnet_x_800mf, regnet_y_1_6gf
-  conv_type: 2
+  c2d_type: resnet18
+  kernel_size: ['K5', "P2", 'K5', "P2"]
+  stride: [ 4 , 0 ]
   use_bn: 1
 
 wandb:

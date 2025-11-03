@@ -3,7 +3,7 @@ import argparse
 import yaml
 
 
-class ArgumentManger:
+class ArgumentManager:
 
     @classmethod
     def init(cls):
@@ -191,7 +191,7 @@ class ArgumentManger:
                 assert (k in key)
         getattr(cls, 'PARSER').set_defaults ( **config )
         cls.parse()
-        dataset_config_path = f"./configs/{ArgumentManger.get ( 'dataset' )}.yaml"
+        dataset_config_path = f"./configs/{ArgumentManager.get ( 'dataset' )}.yaml"
         with open(dataset_config_path, 'r') as f:
             getattr(cls, 'ARGS').dataset_info = yaml.load(f, Loader=yaml.FullLoader)
 

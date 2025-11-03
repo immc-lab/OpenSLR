@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 import torch
 from torch.utils.data import DataLoader
-from .argument_manager import ArgumentManger
+from .argument_manager import ArgumentManager
 from .dataset_manager import DatasetManager
 from .collect_manager import CollectManager
 
@@ -13,7 +13,7 @@ class DataloaderManager:
 
     @classmethod
     def init(cls):
-        arg = ArgumentManger.get()
+        arg = ArgumentManager.get( )
         dataset_list = DatasetManager.get_dataset_list()
         for idx, (mode, train_flag) in enumerate(dataset_list):
             cls.DATALOADER [ mode ] = torch.utils.data.DataLoader(

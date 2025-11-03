@@ -9,7 +9,7 @@ from libs import video_augmentation
 import pickle
 sys.path.append("..")
 
-class BaseFeeder(data.Dataset):
+class VideoDataset( data.Dataset ):
     def __init__(self, prefix, gloss_dict, dataset='phoenix2014', drop_ratio=1, num_gloss=-1, mode="train", transform_mode=True,
                  datatype="lmdb", frame_interval=1, image_scale=1.0, allowable_vid_length=16):
         self.mode = mode

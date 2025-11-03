@@ -3,7 +3,7 @@ import importlib
 
 import numpy as np
 
-from .argument_manager import ArgumentManger
+from .argument_manager import ArgumentManager
 from .log_manager import LogManager
 
 class DatasetManager:
@@ -16,7 +16,7 @@ class DatasetManager:
 
     @classmethod
     def init(cls):
-        arg = ArgumentManger.get()
+        arg = ArgumentManager.get( )
         cls.DATASET_CLASS = import_class(arg.feeder)
         cls.GLOSS_DICT = np.load (
             arg.dataset_info [ 'dict_path' ] ,

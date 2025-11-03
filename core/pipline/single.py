@@ -13,6 +13,7 @@ from torch.cuda.amp import autocast as autocast
 from torch.cuda.amp import GradScaler
 from tqdm import tqdm
 from manager.log_manager import LogManager
+from manager.device_manager import DeviceManager
 
 def seq_train(loader, model, optimizer, scheduler, device, epoch_idx, loss_weights=None):
     model.train()
@@ -24,10 +25,10 @@ def seq_train(loader, model, optimizer, scheduler, device, epoch_idx, loss_weigh
     scaler = GradScaler()
     for batch_idx, data in enumerate(tqdm(loader)):
         data = {
-            'vid': device.data_to_device(data[0]),
-            'vid_lgt': device.data_to_device(data[1]),
-            'label': device.data_to_device(data[2]),
-            'label_lgt': device.data_to_device(data[3])
+            'vid': DeviceManager.to(data[0]),
+            'vid_lgt': DeviceManager.to(data[1]),
+            'label': DeviceManager.to(data[2]),
+            'label_lgt': DeviceManager.to(data[3])
         }
         optimizer.zero_grad()
         with autocast():
@@ -66,10 +67,10 @@ def seq_eval(cfg, loader, model, device, mode, epoch, work_dir):
     stat = {i: [0, 0] for i in range(len(loader.dataset.dict))}
     for batch_idx, data in enumerate(tqdm(loader)):
         data = {
-            'vid' : device.data_to_device ( data [ 0 ] ) ,
-            'vid_lgt' : device.data_to_device ( data [ 1 ] ) ,
-            'label' : device.data_to_device ( data [ 2 ] ) ,
-            'label_lgt' : device.data_to_device ( data [ 3 ] ),
+            'vid' : DeviceManager.to( data [ 0 ] ) ,
+            'vid_lgt' : DeviceManager.to( data [ 1 ] ) ,
+            'label' : DeviceManager.to( data [ 2 ] ) ,
+            'label_lgt' : DeviceManager.to( data [ 3 ] ),
             'info': data [ -1 ]
         }
         with torch.no_grad():

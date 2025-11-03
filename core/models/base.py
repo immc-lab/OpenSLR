@@ -2,8 +2,6 @@ import torch
 import torch.nn as nn
 from typing import Dict , Any , Tuple , Optional , Union , List
 
-import utils
-
 
 class Container ( nn.Module ) :
     def __init__ ( self , modules: Union [ List , Dict ] ) :

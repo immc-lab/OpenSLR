@@ -2,6 +2,7 @@ import torch
 import ctcdecode
 from itertools import groupby
 
+
 class Decode(object):
     def __init__(self, gloss_dict, num_classes, search_mode, blank_id=0):
         self.i2g_dict = dict((v[0], k) for k, v in gloss_dict.items())
@@ -58,3 +59,14 @@ class Decode(object):
             ret_list.append([(self.i2g_dict[int(gloss_id)], idx) for idx, gloss_id in
                              enumerate(max_result)])
         return ret_list
+
+
+class Decoder:
+    def __init__ ( self , args, gloss_dict) :
+        super ( Decoder , self ).__init__ ( )
+        self.decoder = Decode ( gloss_dict , args["num_classes"] , 'beam' )
+    def __call__ ( self , data) :
+        pred = self.decoder.decode ( data["sequence_logits"] , data["feat_len"] , batch_first = False , probs = False )
+        return {
+            "recognized_sents": pred
+        }

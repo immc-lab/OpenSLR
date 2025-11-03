@@ -2,16 +2,13 @@
 import json
 import yaml
 import toml
-from .argument_manager import ArgumentManger
+from .argument_manager import ArgumentManager
 
 class ConfigManager:
-    """
-    The Class that handle all the configs files
-    """
 
     @classmethod
     def init(cls):
-        experiment_config_path = ArgumentManger.get("config")
+        experiment_config_path = ArgumentManager.get( "config" )
         cls.load(experiment_config_path)
 
     @classmethod
@@ -32,19 +29,6 @@ class ConfigManager:
             return getattr(cls, 'CONFIG_DATA')
         else:
             return getattr(cls, 'CONFIG_DATA')[key]
-
-    # @classmethod
-    # def map(cls):
-    #     args = vars(ArgumentManger.ARGS)
-    #     if hasattr(cls, 'CONFIG_DATA'):
-    #         for section in getattr(cls, 'CONFIG_DATA'):
-    #             if isinstance(getattr(cls, 'CONFIG_DATA')[section], dict):
-    #                 for key in getattr(cls, 'CONFIG_DATA')[section]:
-    #                     arg_name = f"{section.lower()}_{key.lower()}"
-    #                     if arg_name in args and args[arg_name] is not None:
-    #                         getattr(cls, 'CONFIG_DATA')[section][key] = args[arg_name]
-    #                     elif key in args and args[key] is not None:
-    #                         getattr(cls, 'CONFIG_DATA')[section][key] = args[key]
 
     @classmethod
     def __iter__(cls):
