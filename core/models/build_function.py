@@ -28,7 +28,20 @@ def build_slowfast(args, gloss_dict, loss_weights):
     pass
 
 def build_corrnet(args, gloss_dict, loss_weights):
-    pass
+    return SignLanguageModel(
+        spatial_module_container=Container([
+            corrnet_resnet18(args)
+        ]),
+        temporal_module_container=Container([
+            CorrNeT_TemporalConv1D(args),
+            BiLSTM(args),
+            Classifier(args)
+        ]),
+        loss_module_container=Container([
+            CorrNetLoss(loss_weights)
+        ]),
+        decoder=Decoder(args, gloss_dict)
+    )
 
 def build_sen(args, gloss_dict, loss_weights):
     pass
