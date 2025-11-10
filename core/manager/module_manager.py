@@ -7,6 +7,7 @@ from .argument_manager import ArgumentManager
 from .log_manager import LogManager
 from .dataset_manager import DatasetManager
 from .collect_manager import CollectManager
+from libs.sync_batchnorm import convert_model
 
 class ModuleManager:
     """
@@ -31,7 +32,12 @@ class ModuleManager:
             arg.model_args ,
             gloss_dict = DatasetManager.get_gloss_dict ( ) ,
             loss_weights = arg.loss_weights ,
-        ).to ( "cuda" )
+        )
+        # ModuleManager.MODEL_OBJECT = convert_model ( ModuleManager.MODEL_OBJECT )
+        ModuleManager.MODEL_OBJECT.to("cuda")
+        
+    @classmethod
+    d
 
     @classmethod
     def init_optimizer_object(cls, optimizer_type="Adam"):

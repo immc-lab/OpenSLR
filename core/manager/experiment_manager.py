@@ -113,8 +113,8 @@ class ExperimentManager:
                     epoch ,
                     cls.arg.work_dir
                 )
-                LogManager.info ( "Dev WER: {:05.2f}".format ( dev_wer ) )
-                LogManager.info ( "Dev WER: {:05.2f}".format ( test_wer ) )
+                LogManager.info ( {"Dev": dev_wer} )
+                LogManager.info ( {"Test": test_wer} )
             if dev_wer < best_dev :
                 best_dev = dev_wer
                 best_epoch = epoch
@@ -190,7 +190,7 @@ class ExperimentManager:
                 else:
                     print('Can Not Remove Weights: {}.'.format(w))
         weights = cls.modified_weights(state_dict['model_state_dict'], False)
-        # weights = cls.modified_weights(state_dict['model_state_dict'])
+        weights = cls.modified_weights(state_dict['model_state_dict'])
         cls.model.load_state_dict(weights, strict=True)
 
     @staticmethod

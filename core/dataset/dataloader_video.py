@@ -69,12 +69,12 @@ class VideoDataset( data.Dataset ):
                 mode = "r" ,
                 shape = (T , 256 , 256 , 3) )
         elif self.dataset == "CSL-Daily" :
-            with open ( f"/sda/data/guozihang/sign_dataset/cd_bigarray/csldaily.pickle" , mode = "rb" ) as f :
+            with open ( f"/sda/data/guozihang/sign_dataset/csldaily_bigarray/csldaily.pickle" , mode = "rb" ) as f :
                 self.info = pickle.load ( f )
             T = self.info [ -1 ] [ 'end' ]
             self.info = {i [ "path" ].split ( "/" ) [ -1 ] : [ i [ "start" ] , i [ "end" ] ] for i in self.info}
             self.mem = np.memmap (
-                f"/sda/data/guozihang/sign_dataset/cd_bigarray/csldaily" ,
+                f"/sda/data/guozihang/sign_dataset/csldaily_bigarray/csldaily" ,
                 mode = "r" ,
                 shape = (T , 256 , 256 , 3) )
 
@@ -136,4 +136,5 @@ class VideoDataset( data.Dataset ):
             ])
 
     def __len__(self):
+        # return 10
         return len(self.inputs_list) - 1
