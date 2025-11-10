@@ -31,7 +31,8 @@ class ModuleManager:
             arg.model_args ,
             gloss_dict = DatasetManager.get_gloss_dict ( ) ,
             loss_weights = arg.loss_weights ,
-        ).to ( "cuda" )
+        )
+        ModuleManager.MODEL_OBJECT.to ( "cuda" )
 
     @classmethod
     def init_optimizer_object(cls, optimizer_type="Adam"):

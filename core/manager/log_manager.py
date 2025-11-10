@@ -75,6 +75,10 @@ class LogManager :
         This method sets up wandb with the project name and configuration.
         """
         try :
+
+            os.environ["WANDB_API_KEY"] = "6e072fcbeafd8fa8dfe122fc628647fbcf74b2f2"
+            os.environ["WANDB_MODE"] = "offline"
+
             output_path = ConfigManager.get ( "work_dir" )
             if not os.path.exists ( os.path.join ( output_path , "wandb" ) ) :
                 os.makedirs ( os.path.join ( output_path , "wandb" ) )
