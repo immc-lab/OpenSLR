@@ -13,7 +13,6 @@ from rich.rule import Rule
 from loguru import logger
 
 from .argument_manager import ArgumentManager
-from .config_manager import ConfigManager
 
 
 class LogManager :
@@ -43,7 +42,7 @@ class LogManager :
 
         try :
             if output_path is None :
-                path = ConfigManager.get ( "work_dir" )
+                path = ArgumentManager.get ( "work_dir" )
             if not os.path.exists ( path ) :
                 os.makedirs ( path )
 
@@ -75,13 +74,13 @@ class LogManager :
         This method sets up wandb with the project name and configuration.
         """
         try :
-            output_path = ConfigManager.get ( "work_dir" )
+            output_path = ArgumentManager.get ( "work_dir" )
             if not os.path.exists ( os.path.join ( output_path , "wandb" ) ) :
                 os.makedirs ( os.path.join ( output_path , "wandb" ) )
             wandb.init (
-                project = ConfigManager.get ( "wandb" ).get ( "project" , "default_project" ) ,
-                config = ConfigManager.get ( ) ,
-                entity = ConfigManager.get ( "wandb" ).get ( "entity" , "default_entity" ) ,
+                project = ArgumentManager.get ( "wandb" ).get ( "project" , "default_project" ) ,
+                config = ArgumentManager.get ( ) ,
+                entity = ArgumentManager.get ( "wandb" ).get ( "entity" , "default_entity" ) ,
                 dir = os.path.join ( output_path , "wandb/" ) ,
             )
             cls.WANDB = True

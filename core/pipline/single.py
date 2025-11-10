@@ -79,6 +79,7 @@ def seq_eval(cfg, loader, model, device, mode, epoch, work_dir):
         total_info += [file_name.split("|")[0] for file_name in data['info']]
         total_sent += ret_dict['recognized_sents']
     try:
+        LogManager.info(work_dir)
         write2file(work_dir + "output-hypothesis-{}.ctm".format(mode), total_info, total_sent)
         ret = evaluate(prefix=work_dir, mode=mode, output_file="output-hypothesis-{}.ctm".format(mode),
                        evaluate_dir=cfg.dataset_info['evaluation_dir'],
