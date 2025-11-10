@@ -35,9 +35,6 @@ class ModuleManager:
         )
         # ModuleManager.MODEL_OBJECT = convert_model ( ModuleManager.MODEL_OBJECT )
         ModuleManager.MODEL_OBJECT.to("cuda")
-        
-    @classmethod
-    d
 
     @classmethod
     def init_optimizer_object(cls, optimizer_type="Adam"):

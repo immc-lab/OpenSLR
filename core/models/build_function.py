@@ -6,6 +6,17 @@ from models.modules.norm import NormLinear
 from models.senmodules.senresnet import SENresnet
 from models.senmodules.SENLoss import SENLoss
 
+from models.modules.slowfast.SlowFast import SlowFast
+from models.modules.slowfast.TemporalSlowFastConv1D import TemporalSlowFastConv1D
+from models.modules.slowfast.temporal_model import temporal_model
+from models.modules.slowfast.slowfast_classifier import slowfast_classifier
+from models.modules.slowfast.slowfast_loss import slowfast_loss
+from models.modules.slowfast.Decoder import SlowFast_Decoder
+
+
+import torch.nn as nn
+
+
 def build_tlp(args, gloss_dict, loss_weights):
     return SignLanguageModel(
         spatial_module_container = Container([
@@ -63,7 +74,25 @@ def build_cvt(args, gloss_dict, loss_weights):
     pass
 
 def build_slowfast(args, gloss_dict, loss_weights):
-    pass
+
+    return SignLanguageModel(
+        spatial_module_container=Container([
+            SlowFast(args)
+        ]),
+
+        temporal_module_container=Container([
+            TemporalSlowFastConv1D(args),
+            temporal_model(args),
+            # slowfast_classifier(args)
+        ]),
+
+        loss_module_container=Container([
+            slowfast_loss(loss_weights)
+        ]),
+
+        decoder=SlowFast_Decoder(args, gloss_dict)
+    )
+    return model
 
 def build_corrnet(args, gloss_dict, loss_weights):
     pass

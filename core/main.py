@@ -11,6 +11,7 @@ from manager.module_manager import ModuleManager
 from manager.device_manager import DeviceManager
 from manager.collect_manager import CollectManager
 
+
 def init():
     ArgumentManager.init( )
     ConfigManager.init()
