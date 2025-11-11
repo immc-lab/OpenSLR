@@ -1,0 +1,248 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenSLR.Build_Function &mdash; OpenSLR  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OpenSLR.Container" href="OpenSLR.Container.html" />
+    <link rel="prev" title="OpenSLR.Pipline" href="OpenSLR.Pipline.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OpenSLR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.html">OpenSLR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.Dataset.html">OpenSLR.Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.Manager.html">OpenSLR.Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.Pipline.html">OpenSLR.Pipline</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OpenSLR.Build_Function</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">可用模型</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-slowfast">build_slowfast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-tlp">build_tlp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-vac">build_vac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-sen">build_sen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-corrnet">build_corrnet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">模型配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">通用参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">损失权重配置</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">使用示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">自定义模型</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.Container.html">OpenSLR.Container</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OpenSLR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">OpenSLR.Build_Function</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/OpenSLR.Build_Function.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="openslr-build-function">
+<h1>OpenSLR.Build_Function<a class="headerlink" href="#openslr-build-function" title="Link to this heading"></a></h1>
+<section id="id1">
+<h2>概述<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>模型构建函数模块提供了多种先进手语识别模型的工厂函数，支持灵活的模型组合和配置。</p>
+</section>
+<section id="id2">
+<h2>可用模型<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="build-slowfast">
+<h3>build_slowfast<a class="headerlink" href="#build-slowfast" title="Link to this heading"></a></h3>
+<p>构建SlowFast手语识别模型。</p>
+<p><strong>函数签名</strong>: <code class="docutils literal notranslate"><span class="pre">build_slowfast(args,</span> <span class="pre">gloss_dict,</span> <span class="pre">loss_weights)</span></code></p>
+<p><strong>参数</strong>:
+- <code class="docutils literal notranslate"><span class="pre">args</span></code>: 模型参数字典
+- <code class="docutils literal notranslate"><span class="pre">gloss_dict</span></code>: 词汇表字典
+- <code class="docutils literal notranslate"><span class="pre">loss_weights</span></code>: 损失权重配置</p>
+<p><strong>返回</strong>: 配置完整的SignLanguageModel实例</p>
+<p>SlowFast网络特点：
+- 双路径时序建模（慢路径+快路径）
+- 多尺度特征提取
+- 高效的时空特征融合</p>
+</section>
+<section id="build-tlp">
+<h3>build_tlp<a class="headerlink" href="#build-tlp" title="Link to this heading"></a></h3>
+<p>构建时序金字塔(TLP)手语识别模型。</p>
+<p><strong>函数签名</strong>: <code class="docutils literal notranslate"><span class="pre">build_tlp(args,</span> <span class="pre">gloss_dict,</span> <span class="pre">loss_weights)</span></code></p>
+<p>TLP (Temporal Pyramid) 特点：
+- 时序金字塔结构
+- 多尺度时序建模
+- ResNet骨干网络</p>
+</section>
+<section id="build-vac">
+<h3>build_vac<a class="headerlink" href="#build-vac" title="Link to this heading"></a></h3>
+<p>构建视觉对齐约束(VAC)手语识别模型。</p>
+<p><strong>函数签名</strong>: <code class="docutils literal notranslate"><span class="pre">build_vac(args,</span> <span class="pre">gloss_dict,</span> <span class="pre">loss_weights)</span></code></p>
+<p>VAC (Visual Alignment Constraint) 特点：
+- 视觉对齐约束
+- 改进的时序卷积
+- 归一化线性分类器</p>
+</section>
+<section id="build-sen">
+<h3>build_sen<a class="headerlink" href="#build-sen" title="Link to this heading"></a></h3>
+<p>构建SEN手语识别模型。</p>
+<p><strong>函数签名</strong>: <code class="docutils literal notranslate"><span class="pre">build_sen(args,</span> <span class="pre">gloss_dict,</span> <span class="pre">loss_weights)</span></code></p>
+<p>SEN (Squeeze-and-Excitation Network) 特点：
+- 通道注意力机制
+- 自适应特征重标定
+- 改进的ResNet架构</p>
+</section>
+<section id="build-corrnet">
+<h3>build_corrnet<a class="headerlink" href="#build-corrnet" title="Link to this heading"></a></h3>
+<p>构建相关性网络(CorrNet)手语识别模型。</p>
+<p><strong>函数签名</strong>: <code class="docutils literal notranslate"><span class="pre">build_corrnet(args,</span> <span class="pre">gloss_dict,</span> <span class="pre">loss_weights)</span></code></p>
+<p>CorrNet特点：
+- 相关性学习网络
+- 改进的ResNet-18骨干
+- 相关性感知的时序建模</p>
+</section>
+</section>
+<section id="id3">
+<h2>模型配置<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="id4">
+<h3>通用参数<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;num_classes&quot;</span><span class="p">:</span> <span class="mi">1296</span><span class="p">,</span>      <span class="c1"># 词汇表大小</span>
+    <span class="s2">&quot;hidden_size&quot;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>      <span class="c1"># 隐藏层维度</span>
+    <span class="s2">&quot;c2d_type&quot;</span><span class="p">:</span> <span class="s2">&quot;slowfast101&quot;</span><span class="p">,</span> <span class="c1"># 2D卷积类型</span>
+    <span class="s2">&quot;kernel_size&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K5&quot;</span><span class="p">,</span> <span class="s2">&quot;P2&quot;</span><span class="p">,</span> <span class="s2">&quot;K5&quot;</span><span class="p">,</span> <span class="s2">&quot;P2&quot;</span><span class="p">],</span>  <span class="c1"># 卷积核配置</span>
+    <span class="s2">&quot;use_bn&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>           <span class="c1"># 使用BatchNorm</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>损失权重配置<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">loss_weights</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;ConvCTC&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>    <span class="c1"># 卷积CTC损失权重</span>
+    <span class="s2">&quot;SeqCTC&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>     <span class="c1"># 序列CTC损失权重</span>
+    <span class="s2">&quot;Dist&quot;</span><span class="p">:</span> <span class="mf">25.0</span><span class="p">,</span>      <span class="c1"># 距离损失权重</span>
+    <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span>       <span class="c1"># 内容一致性损失权重</span>
+    <span class="s2">&quot;Cp&quot;</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span>       <span class="c1"># 内容保持损失权重</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id6">
+<h2>使用示例<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">OpenSLR.Build_Function</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_slowfast</span>
+
+<span class="c1"># 构建SlowFast模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">build_slowfast</span><span class="p">(</span>
+    <span class="n">args</span><span class="o">=</span><span class="n">model_args</span><span class="p">,</span>
+    <span class="n">gloss_dict</span><span class="o">=</span><span class="n">gloss_dict</span><span class="p">,</span>
+    <span class="n">loss_weights</span><span class="o">=</span><span class="n">loss_weights</span>
+<span class="p">)</span>
+
+<span class="c1"># 模型输出格式</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># output包含: loss, total_loss, recognized_sents</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>自定义模型<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>实现新的构建函数：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">build_custom_model</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">gloss_dict</span><span class="p">,</span> <span class="n">loss_weights</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">SignLanguageModel</span><span class="p">(</span>
+        <span class="n">spatial_module_container</span><span class="o">=</span><span class="n">Container</span><span class="p">([</span><span class="n">CustomSpatialModule</span><span class="p">(</span><span class="n">args</span><span class="p">)]),</span>
+        <span class="n">temporal_module_container</span><span class="o">=</span><span class="n">Container</span><span class="p">([</span><span class="n">CustomTemporalModule</span><span class="p">(</span><span class="n">args</span><span class="p">)]),</span>
+        <span class="n">loss_module_container</span><span class="o">=</span><span class="n">Container</span><span class="p">([</span><span class="n">CustomLoss</span><span class="p">(</span><span class="n">loss_weights</span><span class="p">)]),</span>
+        <span class="n">decoder</span><span class="o">=</span><span class="n">CustomDecoder</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">gloss_dict</span><span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="OpenSLR.Pipline.html" class="btn btn-neutral float-left" title="OpenSLR.Pipline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="OpenSLR.Container.html" class="btn btn-neutral float-right" title="OpenSLR.Container" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, guozihang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

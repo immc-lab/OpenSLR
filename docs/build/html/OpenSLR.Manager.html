@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenSLR.Manager &mdash; OpenSLR  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OpenSLR.Pipline" href="OpenSLR.Pipline.html" />
+    <link rel="prev" title="OpenSLR.Dataset" href="OpenSLR.Dataset.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OpenSLR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.html">OpenSLR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.Dataset.html">OpenSLR.Dataset</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OpenSLR.Manager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">管理器列表</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#argumentmanager">ArgumentManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configmanager">ConfigManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logmanager">LogManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datasetmanager">DatasetManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataloadermanager">DataloaderManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modulemanager">ModuleManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#devicemanager">DeviceManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collectmanager">CollectManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#experimentmanager">ExperimentManager</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">工作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">使用示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.Pipline.html">OpenSLR.Pipline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.Build_Function.html">OpenSLR.Build_Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.Container.html">OpenSLR.Container</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OpenSLR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">OpenSLR.Manager</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/OpenSLR.Manager.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="openslr-manager">
+<h1>OpenSLR.Manager<a class="headerlink" href="#openslr-manager" title="Link to this heading"></a></h1>
+<section id="id1">
+<h2>概述<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>管理器模块采用模块化设计，负责系统的各个功能组件的初始化和协调工作。</p>
+</section>
+<section id="id2">
+<h2>管理器列表<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="argumentmanager">
+<h3>ArgumentManager<a class="headerlink" href="#argumentmanager" title="Link to this heading"></a></h3>
+<p>命令行参数管理器。</p>
+<p><strong>主要方法</strong>:
+- <code class="docutils literal notranslate"><span class="pre">init()</span></code> - 初始化参数解析器
+- <code class="docutils literal notranslate"><span class="pre">get(argument=None)</span></code> - 获取参数值
+- <code class="docutils literal notranslate"><span class="pre">parse()</span></code> - 解析命令行参数
+- <code class="docutils literal notranslate"><span class="pre">map(config)</span></code> - 配置映射</p>
+<p>功能：
+- 命令行参数解析
+- 参数验证和映射
+- 配置文件集成</p>
+</section>
+<section id="configmanager">
+<h3>ConfigManager<a class="headerlink" href="#configmanager" title="Link to this heading"></a></h3>
+<p>配置管理器。</p>
+<p><strong>主要方法</strong>:
+- <code class="docutils literal notranslate"><span class="pre">init()</span></code> - 初始化配置
+- <code class="docutils literal notranslate"><span class="pre">get(key=None)</span></code> - 获取配置值
+- <code class="docutils literal notranslate"><span class="pre">load(config_path)</span></code> - 加载配置文件</p>
+<p>支持格式：YAML, JSON, TOML</p>
+</section>
+<section id="logmanager">
+<h3>LogManager<a class="headerlink" href="#logmanager" title="Link to this heading"></a></h3>
+<p>日志管理器。</p>
+<p><strong>主要方法</strong>:
+- <code class="docutils literal notranslate"><span class="pre">init(output_path=None)</span></code> - 初始化日志系统
+- <code class="docutils literal notranslate"><span class="pre">info(data)</span></code> - 信息日志
+- <code class="docutils literal notranslate"><span class="pre">warning(data)</span></code> - 警告日志
+- <code class="docutils literal notranslate"><span class="pre">error(data)</span></code> - 错误日志
+- <code class="docutils literal notranslate"><span class="pre">info_panel(data,</span> <span class="pre">title)</span></code> - 面板式信息输出</p>
+<p>特性：
+- 多输出（控制台+文件）
+- Weights &amp; Biases集成
+- 美观的格式化输出</p>
+</section>
+<section id="datasetmanager">
+<h3>DatasetManager<a class="headerlink" href="#datasetmanager" title="Link to this heading"></a></h3>
+<p>数据集管理器。</p>
+<p><strong>主要方法</strong>:
+- <code class="docutils literal notranslate"><span class="pre">init()</span></code> - 初始化数据集
+- <code class="docutils literal notranslate"><span class="pre">get(mode=&quot;train&quot;)</span></code> - 获取指定模式的数据集
+- <code class="docutils literal notranslate"><span class="pre">get_gloss_dict()</span></code> - 获取词汇表</p>
+</section>
+<section id="dataloadermanager">
+<h3>DataloaderManager<a class="headerlink" href="#dataloadermanager" title="Link to this heading"></a></h3>
+<p>数据加载器管理器。</p>
+<p><strong>主要方法</strong>:
+- <code class="docutils literal notranslate"><span class="pre">init()</span></code> - 初始化数据加载器
+- <code class="docutils literal notranslate"><span class="pre">get(mode=&quot;train&quot;)</span></code> - 获取指定模式的数据加载器</p>
+</section>
+<section id="modulemanager">
+<h3>ModuleManager<a class="headerlink" href="#modulemanager" title="Link to this heading"></a></h3>
+<p>模块管理器。</p>
+<p><strong>主要方法</strong>:
+- <code class="docutils literal notranslate"><span class="pre">init()</span></code> - 初始化模型模块
+- <code class="docutils literal notranslate"><span class="pre">get(module_name)</span></code> - 获取指定模块
+- <code class="docutils literal notranslate"><span class="pre">set(mode)</span></code> - 设置模型模式
+- <code class="docutils literal notranslate"><span class="pre">init_model_object()</span></code> - 初始化模型对象</p>
+</section>
+<section id="devicemanager">
+<h3>DeviceManager<a class="headerlink" href="#devicemanager" title="Link to this heading"></a></h3>
+<p>设备管理器。</p>
+<p><strong>主要方法</strong>:
+- <code class="docutils literal notranslate"><span class="pre">init(device)</span></code> - 初始化设备设置
+- <code class="docutils literal notranslate"><span class="pre">to(data)</span></code> - 数据转移到设备</p>
+</section>
+<section id="collectmanager">
+<h3>CollectManager<a class="headerlink" href="#collectmanager" title="Link to this heading"></a></h3>
+<p>数据收集管理器。</p>
+<p><strong>主要方法</strong>:
+- <code class="docutils literal notranslate"><span class="pre">init(args)</span></code> - 初始化收集器
+- <code class="docutils literal notranslate"><span class="pre">collate(batch)</span></code> - 批次数据整理
+- <code class="docutils literal notranslate"><span class="pre">set_kernel_sizes(kernel_sizes)</span></code> - 设置卷积核大小</p>
+</section>
+<section id="experimentmanager">
+<h3>ExperimentManager<a class="headerlink" href="#experimentmanager" title="Link to this heading"></a></h3>
+<p>实验管理器。</p>
+<p><strong>主要方法</strong>:
+- <code class="docutils literal notranslate"><span class="pre">init(arg)</span></code> - 初始化实验
+- <code class="docutils literal notranslate"><span class="pre">run()</span></code> - 运行实验
+- <code class="docutils literal notranslate"><span class="pre">run_train()</span></code> - 运行训练
+- <code class="docutils literal notranslate"><span class="pre">run_test()</span></code> - 运行测试
+- <code class="docutils literal notranslate"><span class="pre">run_inference(video_data,</span> <span class="pre">video_length)</span></code> - 运行推理</p>
+</section>
+</section>
+<section id="id3">
+<h2>工作流程<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>管理器初始化顺序:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ArgumentManager → ConfigManager → LogManager → DatasetManager
+→ DataloaderManager → ModuleManager → DeviceManager → ExperimentManager
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>使用示例<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">OpenSLR.Manager</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ArgumentManager</span><span class="p">,</span> <span class="n">ConfigManager</span><span class="p">,</span> <span class="n">LogManager</span><span class="p">,</span>
+    <span class="n">DatasetManager</span><span class="p">,</span> <span class="n">DataloaderManager</span><span class="p">,</span> <span class="n">ModuleManager</span><span class="p">,</span>
+    <span class="n">DeviceManager</span><span class="p">,</span> <span class="n">ExperimentManager</span>
+<span class="p">)</span>
+
+<span class="c1"># 初始化所有管理器</span>
+<span class="n">ArgumentManager</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">ConfigManager</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">ArgumentManager</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">ConfigManager</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+<span class="n">LogManager</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">DatasetManager</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">DataloaderManager</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">ModuleManager</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">DeviceManager</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">ArgumentManager</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;device&quot;</span><span class="p">))</span>
+<span class="n">ExperimentManager</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">ArgumentManager</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+
+<span class="c1"># 开始实验</span>
+<span class="n">ExperimentManager</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="OpenSLR.Dataset.html" class="btn btn-neutral float-left" title="OpenSLR.Dataset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="OpenSLR.Pipline.html" class="btn btn-neutral float-right" title="OpenSLR.Pipline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, guozihang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

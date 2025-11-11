@@ -1,0 +1,219 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenSLR.Dataset &mdash; OpenSLR  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OpenSLR.Manager" href="OpenSLR.Manager.html" />
+    <link rel="prev" title="OpenSLR" href="OpenSLR.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OpenSLR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.html">OpenSLR</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OpenSLR.Dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">核心类</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#videodataset">VideoDataset 类</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">数据增强模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">使用示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">数据格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">配置文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.Manager.html">OpenSLR.Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.Pipline.html">OpenSLR.Pipline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.Build_Function.html">OpenSLR.Build_Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenSLR.Container.html">OpenSLR.Container</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OpenSLR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">OpenSLR.Dataset</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/OpenSLR.Dataset.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="openslr-dataset">
+<h1>OpenSLR.Dataset<a class="headerlink" href="#openslr-dataset" title="Link to this heading"></a></h1>
+<section id="id1">
+<h2>概述<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>数据集模块负责视频数据的加载、预处理和数据增强，支持多种数据格式和增强策略。</p>
+</section>
+<section id="id2">
+<h2>核心类<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="videodataset">
+<h3>VideoDataset 类<a class="headerlink" href="#videodataset" title="Link to this heading"></a></h3>
+<p>视频数据集类，支持多种数据加载格式。</p>
+<p><strong>构造函数</strong>:
+<code class="docutils literal notranslate"><span class="pre">VideoDataset(prefix,</span> <span class="pre">gloss_dict,</span> <span class="pre">dataset,</span> <span class="pre">drop_ratio,</span> <span class="pre">num_gloss,</span> <span class="pre">mode,</span> <span class="pre">transform_mode,</span> <span class="pre">datatype,</span> <span class="pre">frame_interval,</span> <span class="pre">image_scale,</span> <span class="pre">allowable_vid_length)</span></code></p>
+<p><strong>主要参数</strong>:
+- <code class="docutils literal notranslate"><span class="pre">prefix</span></code>: 数据集根路径
+- <code class="docutils literal notranslate"><span class="pre">gloss_dict</span></code>: 词汇表字典
+- <code class="docutils literal notranslate"><span class="pre">dataset</span></code>: 数据集名称
+- <code class="docutils literal notranslate"><span class="pre">mode</span></code>: 数据模式 (train/dev/test)
+- <code class="docutils literal notranslate"><span class="pre">datatype</span></code>: 数据格式类型
+- <code class="docutils literal notranslate"><span class="pre">transform_mode</span></code>: 是否启用数据增强</p>
+<p>支持的数据类型：</p>
+<ul class="simple">
+<li><p><strong>video</strong>: 直接读取视频文件</p></li>
+<li><p><strong>lmdb</strong>: 数据库格式（高效IO）</p></li>
+<li><p><strong>memmap</strong>: 内存映射文件（最高性能）</p></li>
+<li><p><strong>features</strong>: 预提取特征</p></li>
+</ul>
+<p><strong>主要方法</strong>:
+- <code class="docutils literal notranslate"><span class="pre">__getitem__(idx)</span></code>: 获取指定索引的数据样本
+- <code class="docutils literal notranslate"><span class="pre">__len__()</span></code>: 返回数据集大小
+- <code class="docutils literal notranslate"><span class="pre">read_video(index)</span></code>: 读取视频文件
+- <code class="docutils literal notranslate"><span class="pre">read_memmap(index)</span></code>: 读取内存映射数据
+- <code class="docutils literal notranslate"><span class="pre">normalize(video,</span> <span class="pre">label)</span></code>: 数据归一化</p>
+</section>
+</section>
+<section id="id3">
+<h2>数据增强模块<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>video_augmentation 模块提供多种数据增强策略：</p>
+<p>增强类列表：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Compose(transforms)</span></code> - 组合多个增强操作</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RandomCrop(size)</span></code> - 随机裁剪</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CenterCrop(size)</span></code> - 中心裁剪</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RandomHorizontalFlip(prob)</span></code> - 随机水平翻转</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TemporalRescale(temp_scaling,</span> <span class="pre">frame_interval)</span></code> - 时序缩放</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RandomRotation(degrees)</span></code> - 随机旋转</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ToTensor()</span></code> - 转换为张量</p></li>
+</ul>
+<p>增强策略包括：</p>
+<ul class="simple">
+<li><p><strong>空间增强</strong>: 随机裁剪、水平翻转、中心裁剪</p></li>
+<li><p><strong>时序增强</strong>: 时序缩放、帧采样</p></li>
+<li><p><strong>WER增强</strong>: 模拟识别错误的数据增强</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>使用示例<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">OpenSLR.Dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">VideoDataset</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">VideoDataset</span><span class="p">(</span>
+    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/path/to/dataset&quot;</span><span class="p">,</span>
+    <span class="n">gloss_dict</span><span class="o">=</span><span class="n">gloss_dict</span><span class="p">,</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;phoenix2014&quot;</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+    <span class="n">datatype</span><span class="o">=</span><span class="s2">&quot;memmap&quot;</span><span class="p">,</span>  <span class="c1"># 使用内存映射格式</span>
+    <span class="n">transform_mode</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># 启用数据增强</span>
+<span class="p">)</span>
+
+<span class="c1"># 获取单个样本</span>
+<span class="n">video</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>数据格式<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>输入数据格式：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;vid&#39;</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>      <span class="c1"># [T, H, W, C] 视频帧</span>
+    <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>            <span class="c1"># 标签索引序列</span>
+    <span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="nb">dict</span>              <span class="c1"># 元数据信息</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2>配置文件<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>数据集配置文件示例：</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">dataset_root</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/dataset&quot;</span>
+<span class="nt">dict_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/gloss_dict.npy&quot;</span>
+<span class="nt">evaluation_dir</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/evaluation&quot;</span>
+<span class="nt">evaluation_prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;phoenix2014&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="OpenSLR.html" class="btn btn-neutral float-left" title="OpenSLR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="OpenSLR.Manager.html" class="btn btn-neutral float-right" title="OpenSLR.Manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, guozihang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
