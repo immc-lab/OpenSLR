@@ -149,6 +149,7 @@ def resnet18(**kwargs):
             checkpoint[ln] = checkpoint[ln].unsqueeze(2)
     model.load_state_dict(checkpoint, strict=False)
     return model
+
 class SENresnet(nn.Module):
     def __init__(self,args):
         super(SENresnet,self).__init__()
