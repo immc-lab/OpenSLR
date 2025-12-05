@@ -158,7 +158,7 @@ Evaluation results include:
 - Sentence Error Rate (SER)
 - Detailed error analysis
 
-# checkpoint
+### checkpoint
 
 | Model       | Download |
 |-------------|----------|
@@ -169,7 +169,7 @@ Evaluation results include:
 |SlowFast     | 🧠 [Checkpoint]() |
 
 
-## Performance on Phoenix14
+### Performance on Phoenix14
 
 |model                        | dev wer          |test wer   |  
 |-----------------------------|------------------|-----------|    
