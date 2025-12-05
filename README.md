@@ -158,6 +158,28 @@ Evaluation results include:
 - Sentence Error Rate (SER)
 - Detailed error analysis
 
+# checkpoint
+
+| Model       | Download |
+|-------------|----------|
+|VAC          | 🧠 [Checkpoint]() |
+|TLP          | 🧠 [Checkpoint]() |
+|SEN          | 🧠 [Checkpoint]() |
+|CorrNet      | 🧠 [Checkpoint]() |
+|SlowFast     | 🧠 [Checkpoint]() |
+
+
+## Performance on Phoenix14
+
+|model                        | dev wer          |test wer   |  
+|-----------------------------|------------------|-----------|    
+| VAC + SMKD                  | 19.9 ↑           | 21.3 ↑    |  
+| TLP                         | 20.2 ↑           | 20.8 -    |  
+| SEN                         | 19.9 ↑           | 19.8 ↓    |  
+| CorrNet                     | 20.2 ↑           | 20.6 ↑    |  
+| SlowFast                    | 21.8 ↑           | 21.5 ↑    |  
+
+
 ## Experiment Management
 
 OpenSLR integrates with Weights & Biases for experiment tracking:
