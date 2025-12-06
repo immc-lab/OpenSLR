@@ -1,12 +1,12 @@
 # OpenSLR - Open Sign Language Recognition Framework
 
-[![Python](https://img.shields.io/badge/Python-3.7%2B-blue)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.8%2B-red)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 ## Overview
 
-OpenSLR (Open Sign Language Recognition) is a comprehensive, modular framework for continuous sign language recognition built on PyTorch. It provides a flexible and extensible architecture that supports multiple state-of-the-art model architectures and training strategies, making it suitable for both research and production use cases.
+OpenSLR (Open Sign Language Recognition) is a comprehensive, modular framework for continuous sign language recognition (CSLR) built on PyTorch. It provides a flexible and extensible architecture that supports multiple model architectures and training strategies, making it suitable for both research and production use cases.
 
 ## Key Features
 
@@ -43,7 +43,7 @@ OpenSLR/
 
 ### Prerequisites
 
-- Python 3.7+
+- Python 3.8+
 - PyTorch 1.8+
 - CUDA 10.2+ (for GPU acceleration)
 
@@ -51,12 +51,8 @@ OpenSLR/
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/OpenSLR.git
+git clone https://github.com/immc-lab/OpenSLR.git
 cd OpenSLR
-
-# Create a virtual environment (optional but recommended)
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt

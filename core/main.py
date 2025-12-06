@@ -1,7 +1,7 @@
 import os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 import torch
-torch.backends.cudnn.enabled = False # 禁用cuDNN
+torch.backends.cudnn.enabled = False
 
 from manager.argument_manager import ArgumentManager
 from manager.config_manager import ConfigManager

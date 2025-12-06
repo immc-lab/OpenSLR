@@ -45,12 +45,6 @@ feeder_args:
 model: models.build_function.build_tlp
 decode_mode: beam
 model_args:
-  spatio_module:
-    [
-      a:
-        param1:
-      b:
-    ]
   num_classes: 1296
   c2d_type: resnet18
   kernel_size: ['K5', "P2", 'K5', "P2"]
