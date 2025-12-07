@@ -132,7 +132,26 @@ The framework provides comprehensive evaluation metrics:
 python main.py --config configs/baseline.yaml --phase test --load-weights ./work_dir/baseline_experiment/best_model.pt
 ```
 
-Evaluation results as shown in blow:
+| Model       | Download |
+|-------------|----------|
+|VAC          | 🧠 [Checkpoint]() |
+|TLP          | 🧠 [Checkpoint]() |
+|SEN          | 🧠 [Checkpoint]() |
+|CorrNet      | 🧠 [Checkpoint]() |
+|SlowFast     | 🧠 [Checkpoint]() |
+
+
+## Performance on Phoenix14
+
+|model                        | dev wer          |test wer   |  
+|-----------------------------|------------------|-----------|    
+| VAC + SMKD                  | 19.9 ↑           | 21.3 ↑    |  
+| TLP                         | 20.2 ↑           | 20.8 -    |  
+| SEN                         | 19.9 ↑           | 19.8 ↓    |  
+| CorrNet                     | 20.2 ↑           | 20.6 ↑    |  
+| SlowFast                    | 21.8 ↑           | 21.5 ↑    |  
+
+
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
