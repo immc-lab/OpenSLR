@@ -132,13 +132,7 @@ The framework provides comprehensive evaluation metrics:
 python main.py --config configs/baseline.yaml --phase test --load-weights ./work_dir/baseline_experiment/best_model.pt
 ```
 
-| Model       | Download |
-|-------------|----------|
-|VAC          | 🧠 [Checkpoint]() |
-|TLP          | 🧠 [Checkpoint]() |
-|SEN          | 🧠 [Checkpoint]() |
-|CorrNet      | 🧠 [Checkpoint]() |
-|SlowFast     | 🧠 [Checkpoint]() |
+
 
 
 ## Performance on Phoenix14
