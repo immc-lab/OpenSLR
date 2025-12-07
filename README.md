@@ -1,4 +1,4 @@
-# OpenSLR - Open Sign Language Recognition Framework
+OpenSLR: An Open-Source Toolbox for Continuous Sign Language Recognition
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.8%2B-red)](https://pytorch.org/)
@@ -6,7 +6,7 @@
 
 ## Overview
 
-OpenSLR (Open Sign Language Recognition) is a comprehensive, modular framework for continuous sign language recognition (CSLR) built on PyTorch. It provides a flexible and extensible architecture that supports multiple model architectures and training strategies, making it suitable for both research and production use cases.
+OpenSLR (Open Sign Language Recognition) is a comprehensive, modular toolbox for continuous sign language recognition (CSLR) built on PyTorch. It provides a flexible and extensible architecture, making it suitable for both research and production use cases.
 
 ## Key Features
 
@@ -21,7 +21,7 @@ OpenSLR (Open Sign Language Recognition) is a comprehensive, modular framework f
 
 ```
 OpenSLR/
-├── core/                  # Main source code
+├── core/                 # Main source code
 │   ├── main.py           # Program entry point
 │   ├── manager/          # Manager components
 │   │   ├── argument_manager.py
@@ -107,24 +107,7 @@ cd core
 python main.py --config configs/baseline.yaml --work-dir ./work_dir/baseline_experiment
 ```
 
-### 4. Model Inference
-
-```python
-from OpenSLR import infer
-
-# Load video data (shape: [batch, channels, frames, height, width])
-video_data = ...  # Your video data here
-video_length = ...  # Length of the video sequence
-
-# Perform sign language recognition
-recognized_sents = infer(video_data, video_length)
-print("Recognition Result:", recognized_sents)
-```
-
 ## Model Architectures
-
-OpenSLR supports various state-of-the-art model architectures:
-
 - **SlowFast**: Two-pathway network for video recognition with different temporal resolutions
 - **TLP (Two-Stream Lightweight Pyramid)**: Efficient architecture with spatial and temporal streams
 - **VAC (Visual Attention Consistency)**: Incorporates attention mechanisms for improved performance
@@ -149,27 +132,7 @@ The framework provides comprehensive evaluation metrics:
 python main.py --config configs/baseline.yaml --phase test --load-weights ./work_dir/baseline_experiment/best_model.pt
 ```
 
-Evaluation results include:
-- Word Error Rate (WER)
-- Sentence Error Rate (SER)
-- Detailed error analysis
-
-## Experiment Management
-
-OpenSLR integrates with Weights & Biases for experiment tracking:
-
-```yaml
-# Enable Weights & Biases in your config file
-wandb:
-  enable: true
-  project: "openslr"
-  entity: "your_wandb_username"
-```
-
-## API Reference
-
-For detailed API documentation, please refer to the [online documentation](https://yourusername.github.io/OpenSLR/).
-
+Evaluation results as shown in blow:
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
