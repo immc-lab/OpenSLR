@@ -156,6 +156,10 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+## Resources
+
+- **[Awesome Continuous Sign Language Recognition](https://github.com/guozihang/awesome-continuous-sign-language-recognition)**: A comprehensive collection of papers, datasets, and resources for continuous sign language recognition research
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
